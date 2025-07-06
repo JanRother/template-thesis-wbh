@@ -34,7 +34,7 @@ jobs:
         with:
           root_file: main.tex
           docker_image: janrother/latex-environment:latest
-          pre_compile: "tlmgr update --self && tlmgr update --all && git lfs fetch --all && git lfs pull"
+          pre_compile: "tlmgr update --self || true && tlmgr update --all || true && git lfs fetch --all && git lfs pull"
 
       - name: Upload PDF Document
         id: upload_document
