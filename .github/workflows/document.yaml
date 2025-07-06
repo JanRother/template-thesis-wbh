@@ -21,9 +21,9 @@ jobs:
   build_and_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Date
+      - name: Get Date and Time
         id: date
-        run: echo "::set-output name=DATE::$(date +'%Y-%m-%d')"
+        run: echo "::set-output name=DATETIME::$(date +'%Y-%m-%d_%H-%M')"
 
       - name: Checkout Repository
         uses: actions/checkout@v2
