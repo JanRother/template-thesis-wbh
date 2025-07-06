@@ -152,6 +152,7 @@ TEMPLATE-THESIS-WBH
 │   │
 │   ├───01
 │   │       00_chapter.tex
+│   │       00_task.tex
 │   │
 │   ├───99
 │   │       00_ending-and-conclusion.tex
@@ -168,8 +169,7 @@ TEMPLATE-THESIS-WBH
 ├───images
 │   └───logos
 │           logo_wbh.png
-│           sublogo_sz-sud-wob.jpg
-│           sublogo_wf.jpg
+│           sublogo_wbh.png
 │
 ├───main
 │       abstract.tex
@@ -229,7 +229,8 @@ The document can be configured by adjusting the settings in the files located in
 
 > **Note**:  
 > Some of the documents content is only enabled in `thesis`-mode.  
-> This mode can be enabled by setting the `thesis`-flag in the `parameters.tex` file to `true`.
+> This mode can be enabled by setting the `thesis`-flag in the `parameters.tex` file to `true`.  
+> A special type for assignments producing less pages is also available and can be enabled by setting the `assignment`-flag in the `parameters.tex` file to `true`.
 
 Every document has comments and explanations in the files to help the user to understand the purpose and the usage of the settings and definitions.
 
