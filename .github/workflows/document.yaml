@@ -49,8 +49,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          TAG_NAME: 'thesis_${{ steps.date.outputs.DATETIME }}'
-          RELEASE_NAME: 'Thesis (${{ steps.date.outputs.DATETIME }})'
+          TAG_NAME: 'thesis_${{ steps.datetime.outputs.DATETIME }}'
+          RELEASE_NAME: 'Thesis (${{ steps.datetime.outputs.DATETIME }})'
         with:
           tag_name: ${{ env.TAG_NAME }}
           release_name: ${{ env.RELEASE_NAME }}
