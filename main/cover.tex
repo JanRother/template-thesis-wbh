@@ -1,0 +1,104 @@
+% COVER PAGE
+
+
+
+\frontmatter
+\begin{titlepage}
+\thispagestyle{titlepage}
+
+    %---------------------------------------------------------------------------
+
+    \newgeometry{top=2cm, bottom=3.5cm, left=1.5cm, right=1.5cm}
+
+    \hfill
+    \includegraphics[scale=0.50]{logos/logo_wbh.png}
+
+    \vspace{0.5em}
+    \hspace{1cm}
+    \begin{minipage}{\dimexpr\textwidth-1.5cm\relax}
+        {\Large\textsf{Fakultät \faculty}}
+    \end{minipage}
+
+    \vfil
+
+    %---------------------------------------------------------------------------
+
+    \hspace{1cm}
+    \begin{minipage}{\dimexpr\textwidth-1.5cm\relax}
+        \hrulefill
+
+        \vspace{2em}
+
+        {\LARGE\textbf{\textsf{\documentSubject\documentYear}}}
+
+        \vspace{2em}
+
+        {\Huge\textbf{\textsf{\documentTitle}}}
+
+        \vspace{2em}
+
+        {\Large\textsf{\documentSubtitle}}
+
+        \vspace{1em}
+
+        \hrulefill
+    \end{minipage}
+
+    %---------------------------------------------------------------------------
+
+    \vfil
+
+    \begingroup
+    \centering
+    \ifbool{thesis}{
+        \textsf{
+            Zur Erlangung des akademischen Grades\\
+            \textbf{\degree}\\
+            im Studiengang \studies\\
+            an der\\
+            \university\\
+        }
+    }{}
+    \endgroup
+
+    %----------------------------------------------------------------------------
+
+    \vfil
+
+    \hspace{1cm}
+    \begin{minipage}{\dimexpr\textwidth-1.5cm\relax}
+        {\Large\textsf{
+            \ifbool{thesis}{
+                vorgelegt von \\\textbf{\documentAuthor}
+            }{
+                \textbf{Autor\ifbool{singleAuthor}{}{en}:} \\\documentAuthor
+            }}}
+
+        \vspace{0.5cm}
+
+        {\Large\textsf{
+            \textbf{Betreuende:}
+            \ifbool{tutorA}{\\\tutorAName}{}
+            \ifbool{tutorB}{\\\tutorBName}{}
+        }}
+
+        \vspace{0.5cm}
+
+        {\Large\textsf{
+            \textbf{Abgabedatum:} \\\documentDate
+        }}
+    \end{minipage}
+
+    \vfil
+
+    %---------------------------------------------------------------------------
+
+    \enlargethispage{5\baselineskip}
+
+    \includegraphics[width=\textwidth]{logos/sublogo_wbh.png}
+
+    %---------------------------------------------------------------------------
+
+\end{titlepage}
+
+\restoregeometry
