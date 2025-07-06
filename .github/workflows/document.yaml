@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Date and Time
-        id: date
-        run: echo "::set-output name=DATETIME::$(date +'%Y-%m-%d_%H-%M')"
+        id: datetime
+        run: echo "DATETIME=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
 
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -49,8 +49,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          TAG_NAME: 'thesis_${{ steps.date.outputs.DATE }}'
-          RELEASE_NAME: 'Thesis (${{ steps.date.outputs.DATE }})'
+          TAG_NAME: 'thesis_${{ steps.date.outputs.DATETIME }}'
+          RELEASE_NAME: 'Thesis (${{ steps.date.outputs.DATETIME }})'
         with:
           tag_name: ${{ env.TAG_NAME }}
           release_name: ${{ env.RELEASE_NAME }}
