@@ -29,7 +29,11 @@
 
         \vspace{2em}
 
-        {\LARGE\textbf{\textsf{\documentSubject\documentYear}}}
+        \ifbool{assignment}{
+            {\LARGE\textbf{\textsf{\documentYear}}}
+        }{
+            {\LARGE\textbf{\textsf{\documentSubject\documentYear}}}
+        }
 
         \vspace{2em}
 
@@ -79,8 +83,17 @@
         {\Large\textsf{
             \textbf{Betreuende:}
             \ifbool{tutorA}{\\\tutorAName}{}
-            \ifbool{tutorB}{\\\tutorBName}{}
+            \ifbool{assignment}{}{\ifbool{tutorB}{\\\tutorBName}{}}
         }}
+
+        \vspace{0.5cm}
+        
+        \ifbool{assignment}{
+            {\Large\textsf{
+            \textbf{Einsendeaufgabencode:}
+            \\\assignmentCode
+        }}
+        }{}
 
         \vspace{0.5cm}
 

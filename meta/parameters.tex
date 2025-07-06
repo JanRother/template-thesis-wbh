@@ -7,8 +7,16 @@
 \newcommand{\course}{Modul\xspace}
 \newcommand{\courseAbbreviation}{AKRNM\xspace}
 \newcommand{\semester}{(W|S)S-JJJJ[/YYYY]\xspace}
-\newcommand{\projectDescription}{Projekttitel\xspace}
-\newcommand{\projectShortDescription}{Projektkurzbezeichnung\xspace}
+\newcommand{\projectDescription}{
+    \ifbool{assignment}{\course (\courseAbbreviation)}{Projekttitel}\xspace
+}
+\newcommand{\projectShortDescription}{\ifbool{assignment}{Einsendeaufgabe}{Projektkurzbezeichnung}\xspace}
+
+% specific metadata concerning the assignment (only in assignment-mode)
+\newcommand{\assignmentCode}{B-ABCDE01-XX1-N01\xspace}
+\newcommand{\assignmentName}{B-ABCDE01XX\xspace}
+\newcommand{\assignmentVariant}{1\xspace}
+\newcommand{\assignmentEdition}{0123N01\xspace}
 
 % flag for single or group work
 % note: there is no integrity check for the students, 
@@ -59,8 +67,14 @@
 \newcommand{\degree}{Master of Science (M.Sc.)}
 \newcommand{\studies}{Informatik}
 
-% metadata required if the document is a thesis
-\newboolean{thesis} \setboolean{thesis}{true}
+% metadata determining the type of the document
+\newboolean{thesis} \setboolean{thesis}{true}   % thesis type
+\newboolean{assignment}                         % assignment type
+    \ifthenelse{\boolean{thesis}}{
+        \setboolean{assignment}{false}              % prevent from being used in a thesis
+    }{
+        \setboolean{assignment}{true}               % configurable here
+    }
 
 % metadata concerning the document manager (default: first student)
 \newcommand{\firstAuthor}{\studentAName\xspace}
