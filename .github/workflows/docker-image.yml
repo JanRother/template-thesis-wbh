@@ -3,7 +3,7 @@
 ############################################################
 
 ########## AUTHOR: Jan Rother
-########## DATE:   2025-07
+########## DATE:   2025-11
 
 name: Build and Publish Container Image
 
@@ -12,6 +12,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 1 * * 1' # 01:00 AM, every Monday
 
 jobs:
   push_to_registry:
