@@ -1,5 +1,5 @@
 \chapter{Beispielkapitel}
-\label{ch:01-example}
+\label{ch:01_example}
 
 \begin{comment}
 Dies ist ein mehrzeiliger Kommentar.
@@ -7,10 +7,10 @@ Er wird nicht im Dokument angezeigt.
 \end{comment}
 
 \section{Eine Beispielsektion}
-\label{sec:01-00-example}
+\label{sec:01-00_example}
 
 \subsection{Subsektion}
-\label{subsec:01-00-00-subsection}
+\label{subsec:01-00-00_subsection}
 
 \enquote{Das ist ein Beispielzitat.} \footnote{Fußnote}
 
@@ -18,56 +18,83 @@ Das Dokument ist in \Gls{latex} geschrieben.
 Texte können mit einer \gls{ide} bearbeitet werden.
 Eine \gls{abk} ist möglich und kann als \gls{abk} mehrfach verwendet werden.
 
-Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext.
+\lipsum[1-3]
 
-\begin{figure}
-	\centering
-	\includegraphics{logos/logo_wbh.png}
-	\caption{Bild}
-\end{figure}
+\autoref{fig:p-00_example-picture} zeigt ein \nameref{fig:p-00_example-picture}.
 
-\subsubsection{Subsubsektion}
-\label{subsubsec:01-00-00-00-subsubsection}
+\image{H}{\defaultImageSize}{p-00_example-picture}{Beispielbild}
 
-Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext.
+\lipsum[4-5]
 
-Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext. Das ist ein Beispieltext.
+Der folgende Quellcode ist ein Beispiel für eine Codebox:
 
-\subsection{Fazit}
-\label{subsec:01-00-01-conclusion}
+\begin{snippet}[H]
+    \centering
+    \begin{codebox}{javascript}{\texttt{Example Code}}
+		function example() {
+			console.log('This is an example code snippet.');
+		}
+    \end{codebox}
+    \caption{\texttt{Example Code} als Auszug aus einer Software}
+    \label{snippet:01-00-00_example-code}
+\end{snippet}
 
-Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit.
+\lipsum[6-7]
 
-Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. Das ist ein Fazit aus einer Referenz. \cite{000:Reference}
+Eine Tabelle fässt wichtige Inhalte zusammen.
 
-\begin{table}
-	\centering
-	\begin{tabulary}{\textwidth}{|L|L|L|}
-		\hline
-		Spalte 0 & Spalte 1 & Spalte 2 \\\hline
-	\end{tabulary}
-	\caption{Tabelle}
+\begin{table}[H]
+    \centering
+    \begin{university-table}{width=\textwidth, colspec={l X[1,l] X[2,l] c}}
+        \textbf{Element} & \textbf{Beschreibung} & \textbf{Liste} & \textbf{Abb.} \\
+        \textbf{Beispiel} & 
+            Ein einfaches Beispiel. & 
+            \begin{itemize}[before=\vspace{-1em}]
+                \item ein Punkt
+				\item noch ein Punkt
+				\item und ein weiterer Punkt
+            \end{itemize} & 
+            \ref{fig:p-00_example-picture} \\
+        \textbf{Weiteres} & 
+			Ein weiteres Beispiel. & 
+			 & 
+			n/a \\
+    \end{university-table}
+    \caption{Elemente mit Beschreibung und Liste in tabellarischer Form}
+    \label{tab:01-00-00_example-table}
 \end{table}
 
-\section{Eine weitere Beispielsektion}
-\label{sec:01-01-example}
+\subsubsection{Subsubsektion}
+\label{subsubsec:01-00-00-00_subsubsection}
 
-\subsection{Unterpunkt}
-\label{subsec:01-01-00-subsection}
+\lipsum[8-9]
 
-Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text. Hier ist Platz für Text.
+Hier folgt eine Aufzählung von Optionen:
+
+\begin{itemize}[label={}, rightmargin=2.5cm]
+    \item \textbf{Option A}	\dotfill	Dies ist die erste Option.
+    \item \textbf{Option B}	\dotfill	Dies ist die zweite Option.
+    \item \textbf{Option C}	\dotfill	Dies ist die dritte Option.
+\end{itemize}
 
 \subsection{Fazit}
-\label{subsec:01-01-01-conclusion}
+\label{subsec:01-00-01_conclusion}
 
-Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit. Das ist ein Fazit.
+\lipsum[10]
 
-Hier ist weiterer Text, entnommen aus einer Referenz. \cite{000:Reference}
+Das ist ein Fazit aus einer Referenz. \cite{000:Reference}
 
-\begin{comment}
-\begin{codebox}{python}{Code}
-	print('Hello World')
-\end{codebox}
-\end{comment}
+\lipsum[11]
 
-Hier ist weiterer Text.
+\section{Eine weitere Beispielsektion}
+\label{sec:01-01_example}
+
+\subsection{Unterpunkt}
+\label{subsec:01-01-00_subsection}
+
+\lipsum[12-13]
+
+\subsection{Fazit}
+\label{subsec:01-01-01_conclusion}
+
+\lipsum[14]
