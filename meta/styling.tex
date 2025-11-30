@@ -1,0 +1,63 @@
+% STYLE SETTINGS
+
+
+
+% tabularray settings
+% custom table environment
+\NewTblrEnviron{university-table}
+\SetTblrInner[university-table]{
+    hlines,
+    vlines,
+    %row{odd} = {whiteSmoke},				% enable for alternating row colors
+	% header settings
+    row{1} = {bg=universityBlue, fg=white}
+}
+
+\NewTblrTheme{university}{
+	% german translations
+	\DefTblrTemplate{contfoot-text}{default}{(Fortsetzung auf der nächsten Seite.)}
+	\DefTblrTemplate{conthead-text}{default}{(Fortsetzung von der vorherigen Seite.)}
+
+	% place caption below longtable
+	\DefTblrTemplate{firsthead,middlehead,lasthead}{default}{}
+	\SetTblrStyle{contfoot}{halign=c}
+	\SetTblrStyle{conthead}{halign=c}
+	\DefTblrTemplate{firstfoot}{default}{
+		\UseTblrTemplate{caption}{default}
+		\UseTblrTemplate{contfoot}{default}
+	}
+	\DefTblrTemplate{middlefoot}{default}{
+		\UseTblrTemplate{capcont}{default}
+		\UseTblrTemplate{contfoot}{default}
+	}
+	\DefTblrTemplate{lastfoot}{default}{
+		\UseTblrTemplate{note}{default}
+		\UseTblrTemplate{remark}{default}
+		\UseTblrTemplate{caption}{default}
+		\UseTblrTemplate{conthead}{default}
+	}
+}
+
+% custom long table environment
+\NewTblrEnviron{university-long-table}
+\SetTblrOuter[university-long-table]{
+	long,
+	% theme settings
+	theme = university,
+}
+\SetTblrInner[university-long-table]{
+    hlines,
+    vlines,
+    row{odd} = {whiteSmoke},
+	% header settings
+    row{1} = {bg=universityPink, fg=white},
+    rowhead = 1,
+}
+
+% TikZ styles for directory trees
+\tikzstyle{every node}  =   [thick,anchor=west,font=\ttfamily]
+\tikzstyle{root}        =   [draw=black,fill=universityPink,font=\ttfamily\bfseries\color{white}]
+\tikzstyle{folder}      =   [draw=black,thick,anchor=west]
+\tikzstyle{selected}    =   [draw=black,fill=black,font=\color{white}]
+\tikzstyle{unselected}  =   [draw=black,fill=gray!10]
+\tikzstyle{ignored}     =   [font=\color{gray}]

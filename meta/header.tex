@@ -1,5 +1,4 @@
 % PAGE LAYOUT
-% requires packages from "packages.tex"
 
 
 
@@ -96,20 +95,81 @@
 	xleftmargin=6pt,
 }
 
+% custom colors
+\definecolor{whiteSmoke}{HTML}{F5F5F5}
+\definecolor{universityBlue}{HTML}{272f82}
+\definecolor{universityPink}{HTML}{DA005F}
+
 % set code boxes
-\newtcblisting{codebox}[3][]{%
-	listing engine=minted,
-	minted style=colorful,
-	minted language=#2,
-	minted options={tabsize=2,breaklines,autogobble,linenos,numbersep=3mm},
-	colback=white,
-	colframe=darkgray,
-	listing only,
-	left=5mm,
-	title=\faCode\quad #3,
-	enhanced,
-	overlay={\begin{tcbclipinterior}\fill[lightgray] (frame.south west)
-	rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+\newtcblisting[auto counter]{codebox}[3][]{%
+    listing engine=minted,
+    listing remove caption=false,
+    % available styles: https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Reference_guide
+    minted style=manni,
+    minted language=#2,
+    minted options={tabsize=2,breaklines,autogobble,linenos,numbersep=3mm,escapeinside=||, stripnl=false,breakafter=-/\_()},
+    colback=white,
+    colframe=universityBlue,
+    listing only,
+    left=6mm,
+    lefttitle=0mm,
+    title=\faCode\hspace{0.25em} #3,
+    enhanced,
+    overlay={
+        \begin{tcbclipinterior}
+            \fill[whiteSmoke](frame.south west)
+            rectangle ([xshift=6mm]frame.north west);
+        \end{tcbclipinterior}
+    },
+    #1
+}
+
+% define new caption type for code snippets
+\DeclareCaptionType{snippet}[Codeausschnitt][Verzeichnis der Codeausschnitte]
+
+% counter for tracking points
+\newcounter{universityTaskPoints}
+\newcounter{universityTaskCounter}
+
+% command to convert simple points to points with leading zero and correct singular or plural form
+\newcommand{\universityFormatPoints}[1]{
+	\ifnum#1<10
+		\ifnum#1=1
+			0#1 Punkt
+		\else
+			0#1 Punkte
+		\fi
+	\else
+		#1 Punkte
+	\fi
+}
+
+% command to add points for subtasks
+\newcommand{\universityPoints}[1]{
+	\addtocounter{universityTaskPoints}{#1}
+	\addtocounter{universityTaskCounter}{1}
+	\par\vspace{0.5em}
+	\begin{flushright}
+		\textit{\textbf{\universityFormatPoints{#1}}}
+	\end{flushright}
+}
+
+% task environment
+\newtcolorbox{universityTask}[1][]{
+	colback=gray!5!white,
+	colframe=universityPink,
+	lefttitle=0mm,
+	title=\faCheckSquareO\hspace{0.25em} Aufgabenstellung, 
+	fonttitle=\bfseries,
+	before upper={\setcounter{universityTaskPoints}{0}\setcounter{universityTaskCounter}{0}},
+	after upper={
+		\ifnum\value{universityTaskCounter}>0													% change to 1, to only show sum when real sub-tasks exist
+			\begin{flushright}
+				\par\noindent\makebox[\linewidth][r]{\rule{2.5cm}{0.6pt}}\par\vspace{0.5em}
+				\textit{\textbf{$\Sigma$ \universityFormatPoints{\arabic{universityTaskPoints}}}}
+			\end{flushright}
+		\fi
+	},
 	#1
 }
 

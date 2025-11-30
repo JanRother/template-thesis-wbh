@@ -11,8 +11,14 @@
 
 
 % general packages
+\usepackage{morewrites}								  				% set more write registers
 \usepackage[top=2.5cm, bottom=2cm, left=3cm, right=2cm]{geometry}   % set page margins
 \usepackage[ngerman]{babel}                                         % set language
+\usepackage[htt]{hyphenat}										    % set hyphenation
+\usepackage[shortcuts]{extdash}
+\usepackage{csquotes}                                               % set quotation marks
+\usepackage{xstring}
+\usepackage{ifthen}
 \usepackage[T1]{fontenc}                                            % set font encoding
 \usepackage[nottoc,notlot,notlof]{tocbibind}                        % remove toc, lot and lof from table of contents
 \usepackage[bottom]{footmisc}                                       % set footnotes to bottom of page
@@ -20,12 +26,10 @@
 \usepackage{setspace}                                               % set line spacing
 \usepackage{parskip}                                                % set paragraph spacing
 \usepackage{graphicx}                                               % include graphics
-\usepackage{wrapfig}												% enable in-text figures
 \usepackage{etoolbox}                                               % patch commands
 \usepackage{fancyhdr}                                               % set header and footer
 \usepackage{titlesec}                                               % set title format
 \usepackage[titles]{tocloft}                                        % set table of contents format
-\usepackage{csquotes}                                               % set quotation marks
 \usepackage[
 	backend=biber,					% biber package for compilation
 	citestyle=numeric,				% citation style matching: IEEE
@@ -33,36 +37,45 @@
 	sorting=none,					% sorting: as in document: IEEE
 	%title={Literaturverzeichnis}	% title of bibliography
 ]{biblatex}															% set bibliography format
-\usepackage[pdftex, pdfborder={0 0 0}]{hyperref}                    % set hyperlinks
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{breakurl}
+\DefineBibliographyStrings{ngerman}{								% set bibliography strings
+	andothers = {et\addabbrvspace al\adddot}						% string for \citeauthor of more than three authors
+}
+\usepackage[pdftex, pdfborder={0 0 0}, breaklinks]{hyperref}        % set hyperlinks
 \usepackage{lmodern}                                                % set font
 \usepackage{color}                                                  % set colors
 \usepackage{xcolor}                                                 % set colors
 \usepackage{xspace}                                                 % set spaces
 \usepackage{caption}                                                % set caption format
+\usepackage{wrapfig} 											    % set wrap figures
+\usepackage{microtype}											    % set microtype
+\usepackage{svg}													% set svg
+
+% advanced tables
+\usepackage{enumitem}
+\usepackage{tabularray}
+\UseTblrLibrary{varwidth}
+\UseTblrLibrary{counter}
+
 \usepackage{tabulary}                                               % set tables
-\usepackage{longtable}                                              % set tables over multiple pages
 \usepackage[acronym, toc]{glossaries}						   		% set glossaries and acronyms
-
-
+\usepackage{listings}											    % set code listings
+\usepackage{siunitx}												% use units
+\sisetup{locale = DE}												% set siunitx to german locale
+\usepackage{blindtext}									 			% use blindtext for dummy text
+\usepackage[ngerman]{cleveref}										% set clever references
 
 % TikZ packages
 % -> documentation: https://texdoc.org/serve/pgf/0
 \usepackage{tikz}													% required for creating graphics
 \usetikzlibrary{trees}												% required for creating trees
 
-% TikZ styles for directory trees
-\tikzstyle{every node}  =   [thick,anchor=west,font=\ttfamily]
-\tikzstyle{root}        =   [draw=black,fill=gray!30,font=\ttfamily\bfseries]
-\tikzstyle{folder}      =   [draw=black,thick,anchor=west]
-\tikzstyle{selected}    =   [draw=black,fill=black,font=\color{white}]
-\tikzstyle{unselected}  =   [draw=black,fill=gray!10]
-\tikzstyle{ignored}     =   [font=\color{gray}]
-
-
-
 % TColorbox packages
 % -> documentation: https://texdoc.org/serve/tcolorbox/0
 \usepackage{shellesc}												% required for shell escape
+\usepackage{soulpos}												% required for highlighting with tcolorbox
 \usepackage{tcolorbox}												% required for creating colored boxes
 \usepackage{fontawesome}											% required for using icons
 \usepackage{minted}													% required for code listing and syntax highlighting
@@ -72,13 +85,13 @@
 \tcbuselibrary{minted}												% required for using minted
 \tcbuselibrary{breakable} 										 	% required for breaking boxes
 
-
-
 % additional packages for development
 \usepackage{comment}												% enable comments in source code
 \ifdraft
 	\usepackage{todonotes}                                          % enable notes
+	\tcbstartdraftmode												% enable draft mode for tcolorbox
 \else
 	\usepackage[disable]{todonotes}                                 % disable
 \fi
 %\usepackage{showframe} 	                                        % show layout borders
+\usepackage{lipsum}													% for dummy text only
