@@ -79,13 +79,13 @@
 	}
 	
 	\ifbool{assignment}{
-		\input{./chapters/01/00_task}
+		\input{./chapters/01/_task}
 	}{
-		\input{./chapters/00/00_introduction-and-motivation}
-		\input{./chapters/01/00_chapter}
+		\input{./chapters/00/_introduction-and-motivation}
+		\input{./chapters/01/_chapter}
 		\input{./chapters/template/template}				% template for new chapters, remove from main
 		\input{./chapters/example/example}					% example chapter, remove from main
-		\input{./chapters/99/00_ending-and-conclusion}
+		\input{./chapters/99/_ending-and-conclusion}
 	}
 
 	%---------------------------------------------------------------------------
@@ -99,13 +99,16 @@
 
 	\begingroup
 		\clearpage\phantomsection
-		\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
-		\listoffigures
+			\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+			\listoffigures
 		%\let\clearpage\relax
 		%\let\cleardoublepage\relax
-		\clearpage\phantomsection
-		\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
-		\listoftables
+		\ifbool{thesis}{\clearpage\phantomsection}{}
+			\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+			\listoftables
+		\ifbool{thesis}{\clearpage\phantomsection}{}
+			\addcontentsline{toc}{chapter}{Verzeichnis der Codeausschnitte}
+			\listofsnippets
 	\endgroup
 	
 	\clearpage
@@ -118,6 +121,6 @@
 	\renewcommand{\chaptername}{Anhang}
 	\pagenumbering{Roman}
 	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-	\input{./chapters/AA/00_attachment}
+	\input{./chapters/AA/_attachment}
 
 \end{document}
