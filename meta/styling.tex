@@ -2,16 +2,6 @@
 
 
 
-% tabularray settings
-% custom table environment
-\NewTblrEnviron{university-table}
-\SetTblrInner[university-table]{
-    hlines,
-    vlines,
-    %row{odd} = {whiteSmoke},				% enable for alternating row colors
-	% header settings
-    row{1} = {bg=universityBlue, fg=white}
-}
 
 \NewTblrTheme{university}{
 	% german translations
@@ -36,22 +26,6 @@
 		\UseTblrTemplate{caption}{default}
 		\UseTblrTemplate{conthead}{default}
 	}
-}
-
-% custom long table environment
-\NewTblrEnviron{university-long-table}
-\SetTblrOuter[university-long-table]{
-	long,
-	% theme settings
-	theme = university,
-}
-\SetTblrInner[university-long-table]{
-    hlines,
-    vlines,
-    row{odd} = {whiteSmoke},
-	% header settings
-    row{1} = {bg=universityPink, fg=white},
-    rowhead = 1,
 }
 
 % TikZ styles for directory trees
