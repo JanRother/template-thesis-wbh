@@ -182,10 +182,13 @@ TEMPLATE-THESIS-WBH
 │
 ├───meta
 │       commands.tex
+│       environments.tex
 │       header.tex
 │       hyphenation.tex
+│       listings.tex
 │       packages.tex
 │       parameters.tex
+│       preamble.tex
 │       styling.tex
 │
 └───out
@@ -200,11 +203,14 @@ The document is structured into several files and directories, that fulfill diff
 - The **main file** is `main.tex`. It includes all other files and sets the general structure of the document.
 - The **chapters** are located in the directory `./chapters`. Each chapter is a separate file and is included in the main file. It is recommended to copy the `./chapters/template/` directory to a new directory to create a new chapter. Note, that new chapters have to be included in the main file, otherwise they will not be compiled. The `./chapters/example/` directory provides an example chapter with a simple structure and some content. For chapters dedicated to the appendix, the `./chapters/AA/` directory is provided as template and can, if needed, be copied and expended to new chapters `./chapters/BB/`, `./chapters/CC/`, and so on.
 - The **meta data** such like document styles are located in the directory `./meta`. The files are included in the main file and provide the general settings and definitions for the document.
-  - `commands.tex` provides custom commands and environments.
+  - `commands.tex` provides custom commands and utilites.
+  - `environments.tex` provides custom environments.
   - `header.tex` provides settings for the document layout and appearance.
   - `hyphenation.tex` provides custom hyphenation rules.
+  - `listings.tex` provides settings for all listings in the document.
   - `packages.tex` list all required packages and their settings.
-  - `parameters.tex` provides the general parameters and configuration for the document.
+  - `parameters.tex` provides the general parameters, configuration for the document and derived commands.
+  - `preamble.tex` provides the correct input order for the meta data files.
   - `styling.tex` provides additional styling settings for the document.
 - Content that is not part of the chapters but is relevant for the document, is located in the directory `./main`. Those files contain text for pages outside the main matter.
   - `abstract.tex` contains the abstract of the work in German and English. (only visible in `thesis`-mode, see [Configuring the Document](#configuring-the-document))
