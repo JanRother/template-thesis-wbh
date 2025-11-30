@@ -148,17 +148,17 @@ TEMPLATE-THESIS-WBH
 │
 ├───chapters
 │   ├───00
-│   │       00_introduction-and-motivation.tex
+│   │       _introduction-and-motivation.tex
 │   │
 │   ├───01
-│   │       00_chapter.tex
-│   │       00_task.tex
+│   │       _chapter.tex
+│   │       _task.tex
 │   │
 │   ├───99
-│   │       00_ending-and-conclusion.tex
+│   │       _ending-and-conclusion.tex
 │   │
 │   ├───AA
-│   │       00_attachment.tex
+│   │       _attachment.tex
 │   │
 │   ├───example
 │   │       example.tex
@@ -167,6 +167,8 @@ TEMPLATE-THESIS-WBH
 │           template.tex
 │
 ├───images
+│   │   p-00_example-picture.png
+│   │
 │   └───logos
 │           logo_wbh.png
 │           sublogo_wbh.png
@@ -184,6 +186,7 @@ TEMPLATE-THESIS-WBH
 │       hyphenation.tex
 │       packages.tex
 │       parameters.tex
+│       styling.tex
 │
 └───out
         main.pdf
@@ -202,6 +205,7 @@ The document is structured into several files and directories, that fulfill diff
   - `hyphenation.tex` provides custom hyphenation rules.
   - `packages.tex` list all required packages and their settings.
   - `parameters.tex` provides the general parameters and configuration for the document.
+  - `styling.tex` provides additional styling settings for the document.
 - Content that is not part of the chapters but is relevant for the document, is located in the directory `./main`. Those files contain text for pages outside the main matter.
   - `abstract.tex` contains the abstract of the work in German and English. (only visible in `thesis`-mode, see [Configuring the Document](#configuring-the-document))
   - `affidavit.tex` contains the affidavit that the work was created independently including placeholders for signatures.
