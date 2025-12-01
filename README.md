@@ -203,7 +203,7 @@ The document is structured into several files and directories, that fulfill diff
 - The **main file** is `main.tex`. It includes all other files and sets the general structure of the document.
 - The **chapters** are located in the directory `./chapters`. Each chapter is a separate file and is included in the main file. It is recommended to copy the `./chapters/template/` directory to a new directory to create a new chapter. Note, that new chapters have to be included in the main file, otherwise they will not be compiled. The `./chapters/example/` directory provides an example chapter with a simple structure and some content. For chapters dedicated to the appendix, the `./chapters/AA/` directory is provided as template and can, if needed, be copied and expended to new chapters `./chapters/BB/`, `./chapters/CC/`, and so on.
 - The **meta data** such like document styles are located in the directory `./meta`. The files are included in the main file and provide the general settings and definitions for the document.
-  - `commands.tex` provides custom commands and utilites.
+  - `commands.tex` provides custom commands and utilities.
   - `environments.tex` provides custom environments.
   - `header.tex` provides settings for the document layout and appearance.
   - `hyphenation.tex` provides custom hyphenation rules.
