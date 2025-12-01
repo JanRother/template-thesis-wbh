@@ -76,5 +76,39 @@
         \setboolean{assignment}{true}               % configurable here
     }
 
+% ------------------------------------------------------------------
+% Document metadata mappings (derived from parameters above)
+% ------------------------------------------------------------------
+
 % metadata concerning the document manager (default: first student)
 \newcommand{\firstAuthor}{\studentAName\xspace}
+
+% title of the document (derived from document category)
+\newcommand{\documentTitle}{\projectShortDescription}
+
+% subtitle of the document (derived from project title)
+\newcommand{\documentSubtitle}{\projectDescription}
+
+% subject of the document (derived from course and semester)
+\newcommand{\documentSubject}{\documentCategory}
+
+% authors of the document (derived from student data, if set to visible)
+\newcommand{\documentAuthor}{%
+    \ifbool{studentA}  {\studentAName, Mat.-Nr.: \studentAMatNr}{}
+    \ifbool{studentB}{\\\studentBName, Mat.-Nr.: \studentBMatNr}{}
+    \ifbool{studentC}{\\\studentCName, Mat.-Nr.: \studentCMatNr}{}
+    \ifbool{studentD}{\\\studentDName, Mat.-Nr.: \studentDMatNr}{}
+    \ifbool{studentE}{\\\studentEName, Mat.-Nr.: \studentEMatNr}{}
+    \ifbool{studentF}{\\\studentFName, Mat.-Nr.: \studentFMatNr}{}
+    \xspace
+}
+
+% lecturer of the document (derived from tutor)
+\newcommand{\documentTutor}{\tutor\xspace}
+
+% signature fields for single author
+\newcommand*{\SignatureAndDate}[1]{%
+    \par\noindent\makebox[52mm]{\hrulefill} \hfill\makebox[65mm]{\hrulefill}
+    \par\noindent\makebox[52mm][c]{Ort, Datum} \hfill\makebox[62mm][c]{#1}
+    \xspace
+}

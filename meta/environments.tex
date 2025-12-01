@@ -1,0 +1,52 @@
+% ENVIRONMENTS: task box, table environments, and themes
+
+
+
+% Task environment
+\newtcolorbox{universityTask}[1][]{
+    colback=gray!5!white,
+    colframe=universityPink,
+    lefttitle=0mm,
+    title=\faCheckSquareO\hspace{0.25em} Aufgabenstellung,
+    fonttitle=\bfseries,
+    before upper={\setcounter{universityTaskPoints}{0}\setcounter{universityTaskCounter}{0}},
+    after upper={
+        \ifnum\value{universityTaskCounter}>0													% change to 1, to only show sum when real sub-tasks exist
+        \begin{flushright}
+            \par\noindent\makebox[\linewidth][r]{\rule{2.5cm}{0.6pt}}\par\vspace{0.5em}
+            \textit{\textbf{$\Sigma$ \universityFormatPoints{\arabic{universityTaskPoints}}}}
+        \end{flushright}
+        \fi
+    },
+    #1
+}
+
+% ------------------------------------------------------------------
+% Table environments
+% ------------------------------------------------------------------
+
+% custom table environment
+\NewTblrEnviron{university-table}
+\SetTblrInner[university-table]{
+    hlines,
+    vlines,
+    % row{odd} = {whiteSmoke},				% enable for alternating row colors
+    % header settings
+    row{1} = {bg=universityBlue, fg=white},
+}
+
+% custom long table environment
+\NewTblrEnviron{university-long-table}
+\SetTblrOuter[university-long-table]{
+    long,
+    % theme settings
+    theme = university,
+}
+\SetTblrInner[university-long-table]{
+    hlines,
+    vlines,
+    % row{odd} = {whiteSmoke},				% enable for alternating row colors
+    % header settings
+    row{1} = {bg=universityPink, fg=white},
+    rowhead = 1,
+}

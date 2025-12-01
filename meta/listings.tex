@@ -1,0 +1,52 @@
+% CODE LISTINGS CONFIGURATION
+
+
+
+% listings package defaults
+\lstset{
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    frame=lt,
+    rulecolor=\color{gray},
+    framerule=3pt,
+    xleftmargin=6pt,
+}
+
+% tcolorbox listing for code blocks powered by minted
+\newtcblisting[auto counter]{codebox}[3][]{%
+    listing engine=minted,
+    listing remove caption=false,
+    % available styles: https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Reference_guide
+    minted style=manni,
+    minted language=#2,
+    minted options={tabsize=2,breaklines,autogobble,linenos,numbersep=3mm,escapeinside=||, stripnl=false,breakafter=-/\_()},
+    colback=white,
+    colframe=universityBlue,
+    listing only,
+    left=6mm,
+    lefttitle=0mm,
+    title=\faCode\hspace{0.25em} #3,
+    enhanced,
+    overlay={
+        \begin{tcbclipinterior}
+            \fill[whiteSmoke](frame.south west)
+            rectangle ([xshift=6mm]frame.north west);
+        \end{tcbclipinterior}
+    },
+    #1
+}
+
+% caption and snippet settings
+\DeclareCaptionType{snippet}[Codeausschnitt][Verzeichnis der Codeausschnitte]
+
+% style captions for listings
+\newlength\myx
+\setlength\myx{\textwidth}
+\addtolength\myx{-2\fboxsep}
+\DeclareCaptionFont{white}{\color{white} \sffamily}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\myx}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\renewcommand{\lstlistingname}{Quelltext}
