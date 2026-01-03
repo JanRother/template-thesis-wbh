@@ -1,4 +1,4 @@
-% CODE LISTINGS CONFIGURATION
+% LISTINGS: Code Listing Configurations and Styles
 
 
 
@@ -24,7 +24,7 @@
     minted language=#2,
     minted options={tabsize=2,breaklines,autogobble,linenos,numbersep=3mm,escapeinside=||, stripnl=false,breakafter=-/\_()},
     colback=white,
-    colframe=universityBlue,
+    colframe=universitySecondary,
     listing only,
     left=6mm,
     lefttitle=0mm,
@@ -32,7 +32,7 @@
     enhanced,
     overlay={
         \begin{tcbclipinterior}
-            \fill[whiteSmoke](frame.south west)
+            \fill[backgroundSecondary](frame.south west)
             rectangle ([xshift=6mm]frame.north west);
         \end{tcbclipinterior}
     },

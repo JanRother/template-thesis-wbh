@@ -1,11 +1,28 @@
-% STYLING: colors, code listings, boxes, captions, and table styles
+% STYLING: Colors, Code Listings, Boxes, Captions and Table Styles
 
 
+
+% --------------------------------------------------
+% Colors
+% --------------------------------------------------
 
 % custom colors
+% 	-> apply the university's corporate design colors
+\definecolor{wbhPink}{HTML}{DA005F}
+\definecolor{wbhBlue}{HTML}{272f82}
+\definecolor{white}{HTML}{FFFFFF}
 \definecolor{whiteSmoke}{HTML}{F5F5F5}
-\definecolor{universityBlue}{HTML}{272f82}
-\definecolor{universityPink}{HTML}{DA005F}
+
+% document colors
+% 	-> keep names as-is, only map with above custom colors
+\colorlet{universityPrimary}{wbhPink}
+\colorlet{universitySecondary}{wbhBlue}
+\colorlet{backgroundPrimary}{white}
+\colorlet{backgroundSecondary}{whiteSmoke}
+
+% --------------------------------------------------
+% Table Styles
+% --------------------------------------------------
 
 \NewTblrTheme{university}{
 	% german translations
@@ -32,9 +49,13 @@
 	}
 }
 
+% --------------------------------------------------
+% TikZ Styles
+% --------------------------------------------------
+
 % TikZ styles for directory trees
 \tikzstyle{every node}  =   [thick,anchor=west,font=\ttfamily]
-\tikzstyle{root}        =   [draw=black,fill=universityPink,font=\ttfamily\bfseries\color{white}]
+\tikzstyle{root}        =   [draw=black,fill=universityPrimary,font=\ttfamily\bfseries\color{white}]
 \tikzstyle{folder}      =   [draw=black,thick,anchor=west]
 \tikzstyle{selected}    =   [draw=black,fill=black,font=\color{white}]
 \tikzstyle{unselected}  =   [draw=black,fill=gray!10]

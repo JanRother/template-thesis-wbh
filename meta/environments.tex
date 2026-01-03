@@ -1,11 +1,15 @@
-% ENVIRONMENTS: task box, table environments, and themes
+% ENVIRONMENTS: Task Box Environments, Table Environments and Themes
 
 
 
-% Task environment
+% --------------------------------------------------
+% Task Box Environments
+% --------------------------------------------------
+
+% custom task box environment
 \newtcolorbox{universityTask}[1][]{
     colback=gray!5!white,
-    colframe=universityPink,
+    colframe=universityPrimary,
     lefttitle=0mm,
     title=\faCheckSquareO\hspace{0.25em} Aufgabenstellung,
     fonttitle=\bfseries,
@@ -21,18 +25,18 @@
     #1
 }
 
-% ------------------------------------------------------------------
-% Table environments
-% ------------------------------------------------------------------
+% --------------------------------------------------
+% Table Environments
+% --------------------------------------------------
 
 % custom table environment
 \NewTblrEnviron{university-table}
 \SetTblrInner[university-table]{
     hlines,
     vlines,
-    % row{odd} = {whiteSmoke},				% enable for alternating row colors
+    % row{odd} = {backgroundSecondary},				% enable for alternating row colors
     % header settings
-    row{1} = {bg=universityBlue, fg=white},
+    row{1} = {bg=universitySecondary, fg=white},
 }
 
 % custom long table environment
@@ -45,8 +49,8 @@
 \SetTblrInner[university-long-table]{
     hlines,
     vlines,
-    % row{odd} = {whiteSmoke},				% enable for alternating row colors
+    % row{odd} = {backgroundSecondary},				% enable for alternating row colors
     % header settings
-    row{1} = {bg=universityPink, fg=white},
+    row{1} = {bg=universityPrimary, fg=white},
     rowhead = 1,
 }

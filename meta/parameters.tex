@@ -1,6 +1,10 @@
-% PARAMETERS FOR METADATA
+% PARAMETERS: Document Information and Metadata Configuration
 
 
+
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
 
 % general metadata concerning the scientific work
 \newcommand{\documentCategory}{Projekt\xspace}
@@ -17,6 +21,10 @@
 \newcommand{\assignmentName}{B-ABCDE01XX\xspace}
 \newcommand{\assignmentVariant}{1\xspace}
 \newcommand{\assignmentEdition}{0123N01\xspace}
+
+% --------------------------------------------------
+% Authors and Tutors
+% --------------------------------------------------
 
 % flag for single or group work
 % note: there is no integrity check for the students, 
@@ -53,6 +61,10 @@
 \newcommand{\tutorAName}{Dozentin oder Dozent\space}
 \newcommand{\tutorBName}{Betreuerin oder Betreuer\space}
 
+% --------------------------------------------------
+% Date and University
+% --------------------------------------------------
+
 % metadata concerning the document
 \newcommand{\documentDayOfWeek}{Wochentag}
 \newcommand{\documentDay}{TT}
@@ -76,9 +88,9 @@
         \setboolean{assignment}{true}               % configurable here
     }
 
-% ------------------------------------------------------------------
-% Document metadata mappings (derived from parameters above)
-% ------------------------------------------------------------------
+% --------------------------------------------------
+% Metadata Mappings (derived from parameters above)
+% --------------------------------------------------
 
 % metadata concerning the document manager (default: first student)
 \newcommand{\firstAuthor}{\studentAName\xspace}
