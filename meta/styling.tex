@@ -1,17 +1,11 @@
-% STYLE SETTINGS
+% STYLING: colors, code listings, boxes, captions, and table styles
 
 
 
-% tabularray settings
-% custom table environment
-\NewTblrEnviron{university-table}
-\SetTblrInner[university-table]{
-    hlines,
-    vlines,
-    %row{odd} = {whiteSmoke},				% enable for alternating row colors
-	% header settings
-    row{1} = {bg=universityBlue, fg=white}
-}
+% custom colors
+\definecolor{whiteSmoke}{HTML}{F5F5F5}
+\definecolor{universityBlue}{HTML}{272f82}
+\definecolor{universityPink}{HTML}{DA005F}
 
 \NewTblrTheme{university}{
 	% german translations
@@ -36,22 +30,6 @@
 		\UseTblrTemplate{caption}{default}
 		\UseTblrTemplate{conthead}{default}
 	}
-}
-
-% custom long table environment
-\NewTblrEnviron{university-long-table}
-\SetTblrOuter[university-long-table]{
-	long,
-	% theme settings
-	theme = university,
-}
-\SetTblrInner[university-long-table]{
-    hlines,
-    vlines,
-    row{odd} = {whiteSmoke},
-	% header settings
-    row{1} = {bg=universityPink, fg=white},
-    rowhead = 1,
 }
 
 % TikZ styles for directory trees
