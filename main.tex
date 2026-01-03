@@ -11,12 +11,16 @@
 % remove ./example/ from the project root and clear references in this file
 % add imports to ./meta/packages.tex, only if necessary
 
-% version from 2025-11
+% version from 2026-01
 
 
 
 \documentclass[a4paper, oneside, 11pt]{book}
 \usepackage[utf8]{inputenc}
+
+% --------------------------------------------------
+% Configurations
+% --------------------------------------------------
 
 \newif\ifdraft
 \draftfalse												% flag: marks document as draft and shows to-do-notes, comment or set to "draftfalse"
@@ -38,11 +42,15 @@
 
 \graphicspath{{images/}}								% set graphics path
 
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
+
 \begin{document}
 
-	%-------------------------------------------------------------------------------
-	% FRONT MATTER
-	%-------------------------------------------------------------------------------
+	%---------------------------------------------------------------
+	% Document: Front Matter
+	%---------------------------------------------------------------
 
 	\listoftodos
 	\input{main/cover}
@@ -63,9 +71,9 @@
 
 	\glsresetall
 
-	%-------------------------------------------------------------------------------
-	% CONTENT
-	%-------------------------------------------------------------------------------
+	%---------------------------------------------------------------
+	% Document: Main Matter
+	%---------------------------------------------------------------
 
 	\mainmatter
 
@@ -83,12 +91,12 @@
 		\input{./chapters/99/_ending-and-conclusion}
 	}
 
-	%---------------------------------------------------------------------------
-	% BIBLIOGRAPHY
-	%---------------------------------------------------------------------------
+	%-----------------------------------------------------------
+	% Document: Back Matter
+	%-----------------------------------------------------------
 
 	\clearpage\phantomsection
-	\renewcommand{\bibname}{Literaturverzeichnis}		% set bibliography title, default: Literatur
+	\renewcommand{\bibname}{Literaturverzeichnis}			% set bibliography title, default: Literatur
 	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 	\printbibliography
 
@@ -108,9 +116,9 @@
 	
 	\clearpage
 
-	%---------------------------------------------------------------------------
-	% APPENDIX
-	%---------------------------------------------------------------------------
+	%-----------------------------------------------------------
+	% Document: Appendix
+	%-----------------------------------------------------------
 
 	\appendix
 	\renewcommand{\chaptername}{Anhang}
