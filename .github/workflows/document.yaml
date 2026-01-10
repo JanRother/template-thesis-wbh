@@ -5,7 +5,7 @@
 ########## AUTHOR: Jan Rother
 ########## DATE:   2026-01
 
-name: Build and Release PDF Document from LaTeX
+name: Build and Release PDF Document from LaTeX as PDF
 
 on:
   push:
@@ -18,13 +18,53 @@ on:
       - 'release/**'
 
 jobs:
-  build_and_release:
+  prepare_metadata:
     runs-on: ubuntu-latest
+    outputs:
+      datetime: ${{ steps.datetime.outputs.DATETIME }}
+      base_name: ${{ env.BASE_NAME }}
+      file_name: ${{ steps.set_filename.outputs.FILENAME }}
+      tag_name: ${{ steps.set_tagname.outputs.TAGNAME }}
+      release_name: ${{ steps.set_releasename.outputs.RELEASENAME }}
+    env:
+      BASE_NAME: thesis
     steps:
       - name: Get Date and Time
         id: datetime
         run: echo "DATETIME=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
+      
+      - name: Set File Name
+        id: set_filename
+        run: echo "FILENAME=${{ env.BASE_NAME }}_${{ steps.datetime.outputs.DATETIME }}.pdf" >> $GITHUB_OUTPUT
+      
+      - name: Set Tag Name
+        id: set_tagname
+        run: echo "TAGNAME=${{ env.BASE_NAME }}_${{ steps.datetime.outputs.DATETIME }}" >> $GITHUB_OUTPUT
+      
+      - name: Set Release Name
+        id: set_releasename
+        run: echo "RELEASENAME='Thesis (${{ steps.datetime.outputs.DATETIME }})'" >> $GITHUB_OUTPUT
+      
+      - name: Output Metadata
+        run: |
+          echo "DateTime ......... ${{ steps.datetime.outputs.DATETIME }}"
+          echo "File Name ........ ${{ steps.set_filename.outputs.FILENAME }}"
+          echo "Tag Name ......... ${{ steps.set_tagname.outputs.TAGNAME }}"
+          echo "Release Name ..... ${{ steps.set_releasename.outputs.RELEASENAME }}"
 
+
+
+  build_and_release:
+    runs-on: ubuntu-latest
+    needs: prepare_metadata
+    env:
+      ROOT_FILE: main.tex
+      DATETIME: ${{ needs.prepare_metadata.outputs.datetime }}
+      BASE_NAME: ${{ needs.prepare_metadata.outputs.base_name }}
+      FILE_NAME: ${{ needs.prepare_metadata.outputs.file_name }}
+      TAG_NAME: ${{ needs.prepare_metadata.outputs.tag_name }}
+      RELEASE_NAME: ${{ needs.prepare_metadata.outputs.release_name }}
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
@@ -32,7 +72,7 @@ jobs:
         id: compile_document
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: main.tex
+          root_file: ${{ env.ROOT_FILE }}
           docker_image: janrother/latex-environment:latest
           pre_compile: "tlmgr update --self || true && tlmgr update --all || true && git lfs fetch --all && git lfs pull"
 
@@ -40,8 +80,8 @@ jobs:
         id: upload_document
         uses: actions/upload-artifact@v6
         with:
-          name: main
-          path: out/main.pdf
+          name: ${{ env.BASE_NAME }}
+          path: out/${{ env.FILE_NAME }}.pdf
           overwrite: 'true'
 
       - name: Release PDF Document
@@ -50,8 +90,6 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          TAG_NAME: 'thesis_${{ steps.datetime.outputs.DATETIME }}'
-          RELEASE_NAME: 'Thesis (${{ steps.datetime.outputs.DATETIME }})'
         with:
           tag_name: ${{ env.TAG_NAME }}
           release_name: ${{ env.RELEASE_NAME }}
@@ -66,6 +104,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: out/main.pdf
-          asset_name: main.pdf
+          asset_path: out/${{ env.FILE_NAME }}.pdf
+          asset_name: ${{ env.FILE_NAME }}.pdf
           asset_content_type: application/pdf
