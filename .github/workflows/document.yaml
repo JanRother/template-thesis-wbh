@@ -3,7 +3,7 @@
 ############################################################
 
 ########## AUTHOR: Jan Rother
-########## DATE:   2025-07
+########## DATE:   2026-01
 
 name: Build and Release PDF Document from LaTeX
 
@@ -26,11 +26,11 @@ jobs:
         run: echo "DATETIME=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
 
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Compile LaTeX Document
         id: compile_document
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
           docker_image: janrother/latex-environment:latest
@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload PDF Document
         id: upload_document
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: main
           path: out/main.pdf
