@@ -9,6 +9,8 @@
 > 
 > Jan Rother  
 > janrother02@gmail.com  
+> 
+> 2026-01
 
 ## Table of Contents
 
@@ -19,6 +21,7 @@
     - [Overview](#overview)
     - [Demarcation](#demarcation)
     - [Important Notes](#important-notes)
+  - [Getting Started](#getting-started)
   - [Usage](#usage)
     - [Repository](#repository)
     - [Toolchain](#toolchain)
@@ -67,6 +70,31 @@ The template only provides a basic structure and formatting for the thesis. It d
 - **The template is not an official document of the university or the department.** It is provided by students and may not be up to date with the latest guidelines or requirements. Students are expected to consult the official guidelines and requirements of the university and the department before using the template.
 - **The template is provided as is.** It is not guaranteed to be free of errors or to work on all systems. Students are expected to test the template and make any necessary adjustments to fit their needs.
 - **The template comes without support.** Students are expected to be able to use LaTeX and the tools required to compile the document. They are also expected to be able to make any necessary adjustments to the template to fit their needs.
+
+## Getting Started
+
+This checklist helps getting started with the template thesis and provides information about what to configure and what to set up for the document to fit the actual needs.
+
+- [ ] Create an empty **repository** on *GitHub* for the project and clone it on the local machine.
+- [ ] Add a *GitHub* personal access token with `repo` scope as `GH_TOKEN` secret in the repository settings, to enable automatic releases.
+- [ ] Clone the **template repository** and copy it into the local repository.
+- [ ] Make an initial **commit** including the `README.md`, `.gitignore`, and `.gitattributes` files with the message `initial commit`.
+- [ ] Set up the **toolchain** by installing the required software on your system.
+- [ ] Add information about the document in the [Introduction](#introduction) section of this [README.md](README.md) file.
+- [ ] Adjust the **pipeline configuration** in the `.github/workflows/` directory:
+  - Remove the `docker-image.yaml` workflow.
+  - Adjust the `document.yaml` workflow, especially the environment variables of the `prepare_metadata` job (`ROOT_NAME` for the main file name without extension and `BASE_NAME` for the base name of the output files).
+- [ ] Adjust the **document configuration**:
+  - Rename the main file `main.tex`, for example to `thesis.tex` or `assignment.tex`.
+  - Adjust the output file name in the `.latexmkrc` file and the workflow configuration accordingly.
+- [ ] Configure the **document** by adjusting the settings in the files located in the `./meta/` directory.
+  - Adjust the content of the `parameters.tex` file to individualize the document.
+  - Remove the `example` chapter and the `template` chapter from the `./chapters/` directory.
+  - Remove the `p-00_example-picture.png` from the `./images/` directory.
+  - Remove template literature from the `literature.bib` file.
+  - Add new chapters as needed in the `./chapters/` directory and stick to the conventions.
+  - Adjust the `main.tex` accordingly to include only the necessary content.
+- [ ] Start **writing**.
 
 ## Usage
 
