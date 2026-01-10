@@ -84,6 +84,9 @@ jobs:
           root_file: ${{ env.ROOT_NAME }}.tex
           docker_image: janrother/latex-environment:latest
           pre_compile: "tlmgr update --self || true && tlmgr update --all || true && git lfs fetch --all && git lfs pull"
+      
+      - name: Update Output Ownership
+        run: sudo chown -R $USER:$USER out/
 
       - name: Copy and Rename PDF Document
         run: |
