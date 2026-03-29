@@ -19,12 +19,16 @@
 \newcommand{\defaultImageFileType}{png}
 
 % easy images
-\newcommand{\image}[4]{
+\newcommand{\image}[5]{
     \begin{figure}[#1]
     \centering
-    \frame{\includegraphics[width=#2\textwidth]{#3.\defaultImageFileType}}
-    \caption{#4}
-    \label{fig:#3}
+    \ifthenelse{\equal{#2}{True}}{
+        \frame{\includegraphics[width=#3\textwidth]{#4.\defaultImageFileType}}
+    }{
+        \includegraphics[width=#3\textwidth]{#4.\defaultImageFileType}
+    }
+    \caption{#5}
+    \label{fig:#4}
     \end{figure}
 }
 
