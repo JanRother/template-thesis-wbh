@@ -73,6 +73,11 @@
 \newcommand{\documentYear}{JJJJ}
 \newcommand{\documentDate}{\documentDayOfWeek, \documentDay.\documentMonth.\documentYear}
 
+% optionally overridden by scripts/generate-date.sh (DATE_MODE=build|commit)
+\IfFileExists{meta/parameters-date-generated.tex}{%
+    \input{meta/parameters-date-generated.tex}%
+}{}
+
 % metadata concerning the university
 \newcommand{\university}{Wilhelm Büchner Hochschule}
 \newcommand{\faculty}{Informatik}

@@ -14,10 +14,25 @@
  - Compiling the Document ............. latexmk
  - Deleting Build Files ............... latexmk -c
  - Cleaning up the Workspace .......... cleanup.sh
+ - Automated Dates .................... DATE_MODE,
+                                        DOCUMENT_TIMEZONE
+ - German locale ...................... de_DE.UTF-8 (listed as de_DE.utf8)
 
 Get your binaries ready with Git LFS by executing:
     git lfs fetch --all
     git lfs pull
+
+Date Metadata Defaults:
+    DATE_MODE=manual for latexmk
+    DATE_MODE=build for scripts/generate-date.sh
+                and for GitHub Actions
+    DOCUMENT_TIMEZONE=Europe/Berlin
+
+Note:
+    Locale -a may show de_DE.utf8; this is expected.
+    Without the locale on a raw host, the script 
+    warns and falls back to hardcoded German 
+    weekday and month names.
 
  Available Tools: git, tlmgr, latexmk, python, ...
  The workspace is ready!

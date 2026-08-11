@@ -4,6 +4,12 @@
 
 
 
+# |--------------------- Custom Files ---------------------|
+
+meta/parameters-date-generated.tex
+
+
+
 # |---------------------- Build Tools ---------------------|
 # LaTeX Build Files
 auxil/

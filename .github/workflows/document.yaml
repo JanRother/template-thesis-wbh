@@ -3,9 +3,13 @@
 ############################################################
 
 ########## AUTHOR: Jan Rother
-########## DATE:   2026-01
+########## DATE:   2026-08
 
 name: Build and Release Document from LaTeX as PDF and MD
+
+env:
+  DATE_MODE: build
+  DOCUMENT_TIMEZONE: Europe/Berlin
 
 on:
   push:
@@ -32,9 +36,29 @@ jobs:
       ROOT_NAME: main
       BASE_NAME: template
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Ensure German Locale Availability
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y locales
+          sudo locale-gen de_DE.UTF-8
+          sudo update-locale LC_TIME=de_DE.UTF-8
+
       - name: Get Date and Time
         id: datetime
         run: echo "DATETIME=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
+
+      - name: Generate Date Metadata
+        run: bash scripts/generate-date.sh
+
+      - name: Upload Date Metadata
+        uses: actions/upload-artifact@v6
+        with:
+          name: date_metadata
+          path: meta/parameters-date-generated.tex
+          if-no-files-found: error
       
       - name: Set File Name
         id: set_file_name
@@ -77,6 +101,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+
+      - name: Download Date Metadata
+        uses: actions/download-artifact@v5
+        with:
+          name: date_metadata
+          path: meta
 
       - name: Compile LaTeX Document
         id: compile_document

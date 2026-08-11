@@ -3,9 +3,23 @@
 ############################################################
 
 ########## AUTHOR: Jan Rother
-########## DATE:   2025-07
+########## DATE:   2026-08
 
 @default_files = ('main.tex');
+
+$ENV{DATE_MODE} = 'manual' if !exists $ENV{DATE_MODE} || $ENV{DATE_MODE} eq '';
+$ENV{DOCUMENT_TIMEZONE} = 'Europe/Berlin' if !exists $ENV{DOCUMENT_TIMEZONE} || $ENV{DOCUMENT_TIMEZONE} eq '';
+
+sub generate_date_metadata {
+    my $script = 'scripts/generate-date.sh';
+    my $status = system($script);
+
+    if ($status != 0) {
+        die "ERROR: Date metadata generation failed with status $status\n.";
+    }
+}
+
+generate_date_metadata();
 
 # |-------------------- Basic Settings --------------------|
 # General

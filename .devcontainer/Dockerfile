@@ -32,7 +32,10 @@ RUN tlmgr update --self --all
 
 # |--------------------- Customization --------------------|
 RUN apt-get update && \
-    apt-get install -y zsh fzf git-lfs && \
+    apt-get install -y zsh fzf git-lfs locales && \
+    sed -i 's/^# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen de_DE.UTF-8 && \
+    update-locale LC_TIME=de_DE.UTF-8 && \
     chsh -s $(which zsh) && \
     apt-get clean
 COPY resources/welcome.txt /root/welcome.txt

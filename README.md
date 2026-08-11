@@ -10,7 +10,7 @@
 > Jan Rother  
 > janrother02@gmail.com  
 > 
-> 2026-01
+> 2026-08
 
 ## Table of Contents
 
@@ -31,6 +31,7 @@
       - [Files for the Thesis](#files-for-the-thesis)
       - [Files for the Toolchain](#files-for-the-toolchain)
     - [Configuring the Document](#configuring-the-document)
+    - [Automated Metadata Dates](#automated-metadata-dates)
     - [Writing](#writing)
     - [Compiling](#compiling)
     - [Cleaning Up](#cleaning-up)
@@ -94,6 +95,7 @@ This checklist helps getting started with the template thesis and provides infor
   - Remove template literature from the `literature.bib` file.
   - Add new chapters as needed in the `./chapters/` directory and stick to the conventions.
   - Adjust the `main.tex` accordingly to include only the necessary content.
+- [ ] Choose the metadata date mode with `DATE_MODE` if you want automated dates. `latexmk` defaults to manual mode unless you export the variable first.
 - [ ] Start **writing**.
 
 ## Usage
@@ -271,6 +273,28 @@ The document can be configured by adjusting the settings in the files located in
 > A special type for assignments producing less pages is also available and can be enabled by setting the `assignment`-flag in the `parameters.tex` file to `true`.
 
 Every document has comments and explanations in the files to help the user to understand the purpose and the usage of the settings and definitions.
+
+### Automated Metadata Dates
+
+Date metadata can be generated automatically without editing `meta/parameters.tex`. The selector is `DATE_MODE`, which defaults to `manual` for `latexmk` and to `build` when `scripts/generate-date.sh` is run directly or in GitHub Actions. The timezone is controlled by `DOCUMENT_TIMEZONE` and defaults to `Europe/Berlin`.
+
+The devcontainer and GitHub Actions runner now provision `de_DE.UTF-8` automatically. When listing locales, `locale -a` typically shows the normalized spelling `de_DE.utf8`; that is expected and the script accounts for it.
+
+Examples:
+
+```bash
+DATE_MODE=manual bash scripts/generate-date.sh
+DATE_MODE=build DOCUMENT_TIMEZONE=Europe/Berlin bash scripts/generate-date.sh
+DATE_MODE=commit bash scripts/generate-date.sh
+```
+
+For local builds with the unchanged `.latexmkrc` file, the `DATE_MODE` variable can be exported to the shell for enabling automatic date generation, by running
+
+```bash
+export DATE_MODE=build
+```
+
+If a raw host does not provide the German locale at all, the script falls back to hardcoded German weekday and month names, prints a warning, and still produces valid output.
 
 ### Writing
 
