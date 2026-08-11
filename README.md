@@ -152,7 +152,6 @@ TEMPLATE-THESIS-WBH
 │   .gitattributes
 │   .gitignore
 │   .latexmkrc
-│   cleanup-files
 │   cleanup.bat
 │   cleanup.sh
 │   LICENSE
@@ -220,6 +219,11 @@ TEMPLATE-THESIS-WBH
 │       parameters.tex
 │       preamble.tex
 │       styling.tex
+├───scripts
+│       cleanup-files
+│       cleanup.bat
+│       cleanup.sh
+│       generate-date.sh
 │
 └───out
         main.pdf
@@ -259,9 +263,10 @@ The following files are provided to support the toolchain and the usage of the d
 - The **`.gitignore`** file is used to exclude files and directories from the version control system *GIT*.
 - The **`.gitattributes`** file is used to define attributes like line endings or *GIT LFS* settings for the repository.
 - The **`LICENSE`** file provides the license of the document and the template.
-- To remove files associated to or created by the compilation, the **`cleanup.bat`** (for *Microsoft Windows*) and **`cleanup.sh`** (for *Unix* based systems) files are provided. Their usage is explained under [Cleaning Up](#cleaning-up).
+- To remove files associated to or created by the compilation, the cleanup launchers are available at the repository root and their canonical implementations live in `./scripts/`. Their usage is explained under [Cleaning Up](#cleaning-up).
 - The **`.devcontainer`** directory contains the configuration for the development container, which is used to provide a consistent development environment for the document.
 - The **`.github`** directory contains the configuration for the *GitHub Actions* workflows, including the one which is used to build and push the Docker image for the development container and the one which is used to compile the document. Note, that the `docker-image.yml` workflow is only used by the template repository to provide the ready-to-use development container image on *Docker Hub*. Therefore, it is recommended to remove this workflow from the repository, as it would most likely fail in a forked repository.
+- The **`./scripts/`** directory contains scripts for various purposes. For example, the `cleanup.sh` script removes build artifacts and the `generate-date.sh` script is used to generate the date metadata for the document.
 
 ### Configuring the Document
 
@@ -326,13 +331,15 @@ The compiled document can be found under `./main.pdf` respectively `./out/main.p
 
 To remove files associated to or created by the compilation, use the provided batch or shell script.
 
-- `.\cleanup.bat` for *Microsoft Windows*
-- `./cleanup.sh` for *Unix* based systems
+- `./cleanup.sh` or `./scripts/cleanup.sh` for *Unix* based systems
+- `./cleanup.bat` or `./scripts/cleanup.bat` for *Microsoft Windows*
 
-By default, the script assumes the project root directory as output folder and removes any files listed in `./cleanup-files`. Furthermore, it moves the artifacts matching `*.pdf` pattern to the project root directory. This behavior can be adjusted by applying the following options:
+The root launchers forward to the scripts under `./scripts/`, so the same commands also work when invoked from either location. By default, the script resolves the project root from its own location, cleans `./out/`, and removes any files listed in `./scripts/cleanup-files`. Furthermore, it moves the artifacts matching `*.pdf` pattern to the project root directory. This behavior can be adjusted by applying the following options:
 
 - `cleanup.* --no-move` prevents the artifacts from being moved
 - `cleanup.* [DIRECTORY]` specifies the output directory to be cleaned up (relative to the project root directory)
+
+The cleanup list now covers the generated file types from the template toolchain, including minted output directories, listings snippets, glossary and acronym intermediates, and the generated date metadata file. The generated PDF is intentionally preserved unless you remove it manually.
 
 As an alternative, `latexmk` can be used to clean up the project directory by executing
 
