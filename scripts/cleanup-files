@@ -1,3 +1,4 @@
+_minted*
 *.acn
 *.acr
 *.alg
@@ -17,6 +18,7 @@
 *.listing
 *.lof
 *.log
+*.losnippet
 *.lot
 *.lol
 *.minted
@@ -26,5 +28,6 @@
 *.synctex.gz
 *.tdo
 *.toc
+*.upa
 *blx.bib
 meta/parameters-date-generated.tex
