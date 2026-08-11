@@ -111,9 +111,6 @@ jobs:
       - name: Compile LaTeX Document
         id: compile_document
         uses: xu-cheng/latex-action@v4
-        env:
-          DATE_MODE: ${{ env.DATE_MODE }}
-          DOCUMENT_TIMEZONE: ${{ env.DOCUMENT_TIMEZONE }}
         with:
           root_file: ${{ env.ROOT_NAME }}.tex
           docker_image: janrother/latex-environment:latest
