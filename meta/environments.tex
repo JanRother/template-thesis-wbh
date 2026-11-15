@@ -65,3 +65,11 @@
     row{1} = {bg=universitySecondary, fg=white},
     rowhead = 1,
 }
+
+% custom itemize environment for table cells with reduced spacing
+\NewDocumentEnvironment{table-itemize}{}{%
+  \vspace*{-\baselineskip}%
+  \begin{itemize}[nosep, leftmargin=*]
+}{%
+  \end{itemize}
+}
